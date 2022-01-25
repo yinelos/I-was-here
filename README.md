@@ -10,6 +10,7 @@ The visitor can leave their name in the form on the main page. After that, the n
 - flask web framework
 - redis/mongo databases
 - docker/docker-compose
+- nginx
 - heroku deploy
 - html, clean js
 
