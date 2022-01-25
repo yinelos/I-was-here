@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: web
+    build: .
+    environment:
+      - compose=True
+    ports:
+      - 5000:5000
+    restart: on-failure
+    networks:
+      - flasknetwork
+    depends_on:
+     - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+    networks:
+      - flasknetwork
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      - flasknetwork
+
+volumes:
+  db-data:
+
+networks:
+  flasknetwork:
+    driver: bridge
