@@ -12,7 +12,7 @@ The visitor can leave their name in the form on the main page. After that, the n
 - docker/docker-compose
 - nginx
 - heroku deploy
-- html, clean js
+- html, tailwind css, clean js
 
 ## All internet users
 
